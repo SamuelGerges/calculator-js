@@ -9,12 +9,12 @@ const initApp = () => {
     const inputButtons = document.querySelectorAll('.number');
     inputButtons.forEach(button => {
         button.addEventListener('click', (event) => {
+            // console.log(event.target.textContent)
             const newInput = event.target.textContent;
+            // console.log(newInput)
             if (newNumberFlag) {
                 currentValueElem.value =
-                    newInput === '.'
-                        ? "0."
-                        : newInput;
+                    newInput === '.' ? "0." : newInput;
                 newNumberFlag = false;
             } else if (currentValueElem.value.includes('.') && newInput === '.') {
                 return;
@@ -30,13 +30,11 @@ const initApp = () => {
     const opButtons = document.querySelectorAll('.operator');
     opButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-
             // equal sign showing
             if (newNumberFlag) {
                 previousValueElem.textContent = "";
                 itemArray = [];
             }
-
             const newOperator = event.target.textContent;
             let currentVal = parseFloat(currentValueElem.value);
             if (isNaN(currentVal)) currentVal = 0;
